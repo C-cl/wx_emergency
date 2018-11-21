@@ -1,20 +1,24 @@
 package com.wxsoft.emergency.ui.detail.fragment.operation
 
+import android.app.Dialog
 import android.arch.lifecycle.Observer
 import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.BottomSheetDialog
 import android.support.design.widget.BottomSheetDialogFragment
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.wxsoft.emergency.R
 import com.wxsoft.emergency.data.entity.OperationMenu
 import com.wxsoft.emergency.databinding.FragmentOperationMenusBinding
 import com.wxsoft.emergency.di.ViewModelFactory
 import com.wxsoft.emergency.ui.detail.PatientDetailViewModel
 import com.wxsoft.emergency.ui.fragment.patients.OpertionMenuAdapter
 import com.wxsoft.emergency.utils.activityViewModelProvider
+import com.wxsoft.emergency.widget.CustomBottomSheetDialogFragment
 import com.wxsoft.emergency.widget.CustomDimDialogFragment
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -51,6 +55,10 @@ class OperationMenusFragment : BottomSheetDialogFragment(), HasSupportFragmentIn
         return binding.root
     }
 
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return BottomSheetDialog(context!!, R.style.Theme_Emergency_Dialog)
+    }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 

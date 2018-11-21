@@ -9,13 +9,28 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
+            android:elevation="@dimen/fragment_elevation"
+            android:translationZ="@dimen/fragment_elevation"
+            android:focusable="true"
+            android:padding="12dp"
+            android:orientation="vertical"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_scroll_up_fragment">
-    <android.support.v7.widget.RecyclerView
 
-            app:layout_constraintTop_toTopOf="parent"
+        <TextView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="操作清单"
+
+                android:id="@+id/title"/>
+    <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="6dp"
+            app:layout_constraintTop_toBottomOf="@+id/title"
             app:layout_constraintLeft_toLeftOf="parent"
             android:id="@+id/list"
+            android:background="@drawable/bg_dialog_edit_panel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
@@ -23,7 +38,7 @@
             android:paddingBottom="@dimen/list_item_spacing_half"
             app:layoutManager="android.support.v7.widget.GridLayoutManager"
             app:spanCount="4"
-            tools:context=".ui.detail.operation.OperationMenusFragment"
-            tools:listitem="@layout/fragment_operationmenu_list_dialog_item" />
+            tools:context=".ui.detail.PatientDetailActivity"
+            tools:listitem="@layout/fragment_operation_menu_item" />
     </android.support.constraint.ConstraintLayout>
 </layout>
