@@ -12,8 +12,8 @@
         android:clickable="true"
         android:elevation="@dimen/fragment_elevation"
         android:focusable="true"
-        android:orientation="vertical"
         android:background="@drawable/bg_scroll_up_fragment"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -23,8 +23,8 @@
 
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
-            android:paddingBottom="34dp"
-            android:background="@drawable/bg_scroll_up_fragment"
+            android:paddingBottom="14dp"
+
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent">
             <TextView
@@ -44,7 +44,7 @@
                     android:id="@+id/edit_part"
                     android:layout_marginTop="6dp"
                     android:padding="10dp"
-                    android:background="@drawable/bg_patient_basic_info_item"
+                    android:background="@drawable/bg_dialog_edit_panel"
                     android:layout_height="wrap_content"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/base_info_title">
@@ -155,6 +155,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:textSize="14sp"
                     android:maxLines="1"
+                    android:maxLength="8"
                     android:id="@+id/name"
                     android:imeOptions="actionNext"
                     android:text="@={viewModel.patient.name}"
