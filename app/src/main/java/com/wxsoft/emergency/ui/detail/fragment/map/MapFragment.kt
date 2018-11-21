@@ -15,18 +15,34 @@ import com.wxsoft.emergency.databinding.FragmentEmrMapBinding
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_emr_map.*
 import com.wxsoft.emergency.R
+import com.wxsoft.emergency.data.entity.GpsLocation
+import com.wxsoft.emergency.di.ViewModelFactory
+import com.wxsoft.emergency.ui.detail.PatientDetailViewModel
+import com.wxsoft.emergency.utils.activityViewModelProvider
+import kotlinx.android.synthetic.main.activity_patient_detail.*
 import javax.inject.Inject
 
 
 class MapFragment : DaggerFragment() {
 
+
+    @Inject lateinit var factory: ViewModelFactory
+
     private lateinit var binding: FragmentEmrMapBinding
 
     private var baiduMap:BaiduMap?=null
+
+    private lateinit var viewModel:PatientDetailViewModel
     @Inject
     lateinit var locationClient: LocationClient
 
     private lateinit var locationListener:BDAbstractLocationListener
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        viewModel=activityViewModelProvider(factory)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -76,6 +92,8 @@ class MapFragment : DaggerFragment() {
 
                         // 设置定位图层的配置（定位模式，是否允许方向信息，用户自定义定位图标）
                         baiduMap!!.setMyLocationData(locData)
+
+                        viewModel.uploadGpsLocation(GpsLocation(viewModel.patientId,"测试车辆",location.longitude,location.latitude))
 
                     }
                 }

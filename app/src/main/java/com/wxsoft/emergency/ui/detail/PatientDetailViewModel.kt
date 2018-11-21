@@ -6,10 +6,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.os.Handler
 import android.os.Message
-import com.wxsoft.emergency.data.entity.Dictionary
-import com.wxsoft.emergency.data.entity.EmrItem
-import com.wxsoft.emergency.data.entity.OperationMenu
-import com.wxsoft.emergency.data.entity.Patient
+import com.wxsoft.emergency.data.entity.*
 import com.wxsoft.emergency.data.entity.chest.VitalSign
 import com.wxsoft.emergency.data.remote.*
 import com.wxsoft.emergency.exception.ServerException
@@ -31,7 +28,8 @@ class PatientDetailViewModel @Inject constructor(private val patientApi: Patient
                                                  private val evaluationApi: EvaluationApi,
                                                  private val vitalSignApi: VitalSignApi,
                                                  private val operationApi: OperationMenuApi,
-                                                 private val emrLogApi: EmrLogApi): ViewModel(), EventActions {
+                                                 private val emrLogApi: EmrLogApi,
+                                                 private val gpsApi: GpsApi): ViewModel(), EventActions {
 
 
     private var _attackTime:Long=0
@@ -265,6 +263,24 @@ class PatientDetailViewModel @Inject constructor(private val patientApi: Patient
 
                     patient.value?.wristband_Number = result.data
                 }
+            }
+    }
+
+    fun uploadGpsLocation(location: GpsLocation){
+        gpsApi.save(location)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map<Resource<String>> {
+                Resource.Success(it)
+            }
+            .onErrorReturn { Resource.Error(it) }
+            .observeOn(AndroidSchedulers.mainThread())
+            .startWith(Resource.Loading)
+            .subscribe { result ->
+//                if (result is Resource.Success) {
+//
+//                    patient.value?.wristband_Number = result.data
+//                }
             }
     }
 

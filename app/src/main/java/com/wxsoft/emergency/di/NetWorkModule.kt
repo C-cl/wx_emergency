@@ -99,4 +99,10 @@ class NetWorkModule {
         return retrofit.create(AccountApi::class.java)
     }
 
+    @Provides
+    fun provideGpsApi(retrofit: Retrofit):GpsApi{
+
+        return retrofit.create(GpsApi::class.java)
+    }
+
 }

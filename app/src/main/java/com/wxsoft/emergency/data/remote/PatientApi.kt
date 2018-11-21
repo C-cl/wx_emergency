@@ -8,10 +8,10 @@ import retrofit2.http.*
 
 interface PatientApi{
 
-    @GET("patient/GetPatients")
+    @GET("Patient/GetPatients")
     fun patients():Observable<List<Patient>>
 
-    @GET("patient/GetById/{id}")
+    @GET("Patient/GetById/{id}")
     fun patient(@Path("id")id:String):Flowable<Patient>
 
     @GET("/api/Patient/GetByWristband/{rFid}")
