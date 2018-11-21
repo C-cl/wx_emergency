@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+                name="viewModel"
+                type="com.wxsoft.emergency.ui.detail.PatientDetailViewModel"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_scroll_up_fragment">
+    <android.support.v7.widget.RecyclerView
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/list_item_spacing_half"
+            android:paddingBottom="@dimen/list_item_spacing_half"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager"
+            app:spanCount="4"
+            tools:context=".ui.detail.operation.OperationMenusFragment"
+            tools:listitem="@layout/fragment_operationmenu_list_dialog_item" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

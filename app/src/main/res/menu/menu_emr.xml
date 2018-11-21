@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.wxsoft.emergency.ui.home.EmrActivity">
+    <item
+        android:id="@+id/action_edit_patient"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_edit_patient_info"
+        android:title="@string/action_edit_base_info"
+        app:showAsAction="always" />
+</menu>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+	<data>
+		<variable name="emr" type="com.wxsoft.emergency.data.entity.EmrItem"/>
+		<variable
+			name="listener" type="com.wxsoft.emergency.ui.emr.EventActions"/>
+	</data>
+
+	<android.support.constraint.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		<android.support.constraint.Guideline
+		android:id="@+id/keyline"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:orientation="vertical"
+		app:layout_constraintGuide_begin="@dimen/emr_keyline_2times" />
+		<android.support.design.chip.Chip
+			android:id="@+id/line_title"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="@dimen/margin_normal"
+			android:layout_marginTop="@dimen/agenda_block_padding_vert"
+			android:layout_marginBottom="@dimen/agenda_block_padding_vert"
+			android:text="@{emr.name}"
+			android:textSize="20sp"
+			tools:text="发车"
+			android:checkable="true"
+			android:onClick="@{() -> listener.onOpen(emr.id)}"
+			app:layout_constraintStart_toEndOf="@id/keyline"
+			app:layout_constraintTop_toTopOf="parent"
+			android:layout_marginStart="@dimen/spacing_normal"
+			app:layout_constraintBottom_toBottomOf="parent"/>
+	</android.support.constraint.ConstraintLayout>
+</layout>

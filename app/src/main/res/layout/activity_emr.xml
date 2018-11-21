@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel" type="com.wxsoft.emergency.ui.emr.EmrViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <!--<include layout="@layout/layout_action_bar_tab"-->
+            <!--app:viewModel="@{viewModel}"/>-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+
+            app:onRefreshListener="@{() -> viewModel.onSwipeRefresh()}"
+            app:refreshing="@{viewModel.isLoading}"
+            android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/list"
+            app:layoutManager="LinearLayoutManager"
+            />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/coordinator_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/maps"
+            android:name="com.wxsoft.emergency.ui.emr.fragment.map.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="4dp"
+            app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
+            app:behavior_skipCollapsed="true"
+
+            tools:layout="@layout/fragment_profile"
+            />
+        <fragment
+            android:id="@+id/evaluations"
+            android:name="com.wxsoft.emergency.ui.emr.fragment.evaluation.EvaluationFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="4dp"
+            app:behavior_hideable="true"
+
+            app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+            app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
+            app:behavior_skipCollapsed="true"
+            tools:layout="@layout/fragment_dictionary" />
+
+        </android.support.design.widget.CoordinatorLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

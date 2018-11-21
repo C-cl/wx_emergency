@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+	<data>
+		<variable name="patient" type="com.wxsoft.emergency.data.entity.Patient"/>
+		<variable name="listener" type="com.wxsoft.emergency.ui.emr.EventActions"/>
+	</data>
+	<android.support.design.card.MaterialCardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:strokeColor="@color/colorPrimary"
+		android:layout_margin="3dp"
+		app:strokeWidth="1dp"
+		app:cardCornerRadius="16dp">
+		<android.support.constraint.ConstraintLayout
+			android:id="@+id/container"
+			android:layout_width="match_parent"
+			android:padding="10dp"
+            android:onClick="@{() -> listener.onOpen(patient.id)}"
+			android:layout_height="wrap_content">
+
+			<TextView
+				android:id="@+id/patient_name"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/activity_horizontal_margin"
+				android:layout_marginLeft="@dimen/activity_horizontal_margin"
+				android:layout_marginTop="@dimen/activity_vertical_margin"
+				android:textSize="16dp"
+				tools:text="老王"
+				android:text="@{patient.name}"
+
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<TextView
+				android:id="@+id/patient_age"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/activity_horizontal_margin"
+				android:layout_marginLeft="@dimen/activity_horizontal_margin"
+				android:layout_marginTop="@dimen/activity_vertical_margin"
+				android:textSize="12dp"
+				tools:text="76"
+				android:text="@{String.valueOf(patient.age_Value)}"
+				app:layout_constraintLeft_toRightOf="@id/patient_name"
+				app:layout_constraintBottom_toBottomOf="@id/patient_name" />
+
+            <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+					android:layout_marginStart="@dimen/activity_horizontal_margin"
+					android:layout_marginLeft="@dimen/activity_horizontal_margin"
+					android:layout_marginTop="@dimen/activity_vertical_margin"
+                    tools:src="@drawable/ic_gender_man"
+                    android:src="@{ patient.gender==1 ? @drawable/ic_gender_man:@drawable/ic_gender_woman}"
+                    app:layout_constraintLeft_toRightOf="@id/patient_age"
+                    app:layout_constraintBottom_toBottomOf="@id/patient_age"/>
+
+		</android.support.constraint.ConstraintLayout>
+	</android.support.design.card.MaterialCardView>
+</layout>

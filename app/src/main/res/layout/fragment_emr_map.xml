@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.wxsoft.emergency.ui.emr.EmrViewModel"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/container"
+        android:clickable="true"
+        android:elevation="@dimen/fragment_elevation"
+        android:translationZ="@dimen/fragment_elevation"
+        android:orientation="vertical"
+        android:background="@drawable/bg_scroll_up_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.baidu.mapapi.map.MapView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/mapView"
+                android:clickable="true">
+
+        </com.baidu.mapapi.map.MapView>
+    </android.support.constraint.ConstraintLayout>
+</layout>
